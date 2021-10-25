@@ -17,6 +17,8 @@ ______________________________________
 int binomialCoeff(int n, int k)
 { // c(line,i)=line!/((line-i)!*i!)
 	int value = 1;
+	if (k > n - k)
+		k = n - k;
 	for (int i = 0; i < k; ++i)
 	{
 		value *= (n - i);
