@@ -29,7 +29,7 @@ int binomialCoeff(int n, int k)
 void Ex1(int n)
 {
 	// Your codes here
-	for (int line = 0; line < n; line++)
+	for (int line = 0; line < n + 1; line++)
 	{
 		for (int i = 0; i <= line; i++)
 		{
