@@ -72,16 +72,16 @@ void Ex3(int in_arr[], int n)
 	// second diagonal
 	int k = 1;
 	int q = n - 2;
-	while (k <= n - 1)
+	while (k <= n - 1 && q >= 0)
 	{
 		int x = a[q][k];
 		int vt1 = k - 1;
 		int vt2 = q + 1;
-		for (; (vt1 >= 0 && vt2 <= q) && a[vt2][vt1] < x; vt1--, vt2++)
+		for (; (vt1 >= 0 && vt2 <= n - 1) && a[vt2][vt1] < x; vt1--, vt2++)
 		{
-			a[vt2 + 1][vt1 + 1] = a[vt2][vt1];
+			a[vt2 - 1][vt1 + 1] = a[vt2][vt1];
 		}
-		a[vt2 + 1][vt1 + 1] = x;
+		a[vt2 - 1][vt1 + 1] = x;
 		k++;
 		q--;
 	}
