@@ -24,33 +24,60 @@ void Array2Dconverter(int arr[], int a[SIZE][SIZE], int m, int n)
 {
 	int row, column;
 	int counter = 0;
-	//Convert 1D array to 2D array
-	for (row = 0; row <= (m - 1); row ++){
-		for (column = 0; column <= (n - 1); column ++){
+	// Convert 1D array to 2D array
+	for (row = 0; row <= (m - 1); row++)
+	{
+		for (column = 0; column <= (n - 1); column++)
+		{
 			a[row][column] = arr[counter];
 			counter++;
 		}
 	}
 }
 
-void Ex5(int arr[], int m, int n){
+void Ex5(int arr[], int m, int n)
+{
 	int a[SIZE][SIZE];
-	Array2Dconverter(arr,a,m,n);
-	//Your codes here
-
+	Array2Dconverter(arr, a, m, n);
+	// Your codes here
+	int maximum = 0;
+	for (int i = 0; i < m; i++)
+	{
+		int minimum_of_row;
+		int k = 1;
+		while (k <= n - 1)
+		{
+			int x = a[i][k];
+			int vt = k - 1;
+			for (; vt >= 0 && a[i][vt] > x; vt--)
+			{
+				a[i][vt + 1] = a[i][vt];
+			}
+			a[i][vt + 1] = x;
+			k++;
+		}
+		minimum_of_row = a[i][0];
+		if (minimum_of_row > maximum)
+		{
+			maximum = minimum_of_row;
+		}
+	}
+	printf("%d", maximum);
 }
 
-int main(int argc, char *argv[]) {
-	//testing variable, applying it to your algorithm for auto-evaluating
+int main(int argc, char *argv[])
+{
+	// testing variable, applying it to your algorithm for auto-evaluating
 	int row = atoi(argv[1]);
 	int col = atoi(argv[2]);
-	argc-=3;
-	int testcase[argc],i;
-	for(i=0; i<argc;i++){
-		testcase[i] = atoi(argv[i+3]);
+	argc -= 3;
+	int testcase[argc], i;
+	for (i = 0; i < argc; i++)
+	{
+		testcase[i] = atoi(argv[i + 3]);
 	}
 
 	Ex5(testcase, row, col);
-	
+
 	return 0;
 }
